@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='orders.css') }}">
+    <title>Orders</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="{{ url_for('home') }}" class="home-button">Home</a>
+        </div>
+        <h1>Orders</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>User Name</th>
+                    <th>Dishes</th>
+                    <th>Restaurants</th>
+                    <th>Total Price</th>
+                    <th>Special Requests</th>
+                    <th>Status</th>
+                    {% if session['role'] in ['ADMIN', 'OPERATOR'] %}
+                    <th>Action</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_id }}</td>
+                    <td>{{ order.user_name }}</td>
+                    <td>{{ order.dishes }}</td>
+                    <td>{{ order.restaurants }}</td>
+                    <td>${{ order.total_price }}</td>
+                    <td>{{ order.special_requests }}</td>
+                    <td>{{ order.status }}</td>
+                    {% if session['role'] in ['ADMIN', 'OPERATOR'] %}
+                    <td>
+                        {% if order.status == 'Pending' %}
+                        <form method="POST" action="{{ url_for('mark_complete', order_id=order.order_id) }}" style="display:inline;">
+                            <button type="submit">Mark as Complete</button>
+                        </form>
+                        {% endif %}
+                        <form method="POST" action="{{ url_for('delete_order', order_id=order.order_id) }}" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

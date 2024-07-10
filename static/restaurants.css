@@ -1,0 +1,190 @@
+body {
+    background: linear-gradient(90deg, #64bdcb, #ceceea, #776BCC);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.header {
+    position: absolute;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.left-header, .right-header {
+    display: flex;
+    align-items: center;
+}
+
+.home-page, .view-cart, .back-to-restaurants, .view-orders {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.home-page {
+    margin-right: 10px;
+}
+
+.view-cart, .back-to-restaurants, .view-orders {
+    margin-left: 10px;
+}
+
+.home-page:hover, .view-cart:hover, .back-to-restaurants:hover, .view-orders:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.restaurants_title {
+    display: block;
+    color: white;
+    font-size: 100px;
+    font-weight: 2px;
+    text-shadow: 6px 9px 1px #616666;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.layout {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grow1 {
+    flex-grow: 1;
+    padding: 20px;
+    max-width: 300px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 32px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content {
+    width: 100%;
+}
+
+.dish-name, .restaurant-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.dish-image, .restaurant-image {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.dish-description, .restaurant-description {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.dish-price, .restaurant-rating {
+    font-size: 18px;
+    font-weight: bold;
+}
+.add-to-cart-button,
+.edit-dish-button,
+.delete-dish-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-to-cart-button:hover,
+.edit-dish-button:hover,
+.delete-dish-button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.action-form {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center; /* Centering the buttons */
+}
+.add-to-cart-button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 5px;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-to-cart-button:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.add-dish-button {
+    background-color: #ffc107;
+    color: black;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin: 10px 0;
+    text-align: center;
+    display: inline-block;
+}
+
+.add-dish-button:hover {
+    background-color: #e0a800;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.action-form {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}

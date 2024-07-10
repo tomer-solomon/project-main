@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='manage.css') }}">
+    <title>Users List</title>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('home') }}" class="home-button">Home</a>
+    </div>
+    <div class="container">
+        <h1>Registered Users</h1>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>City</th>
+                    <th>Address</th>
+                    <th>Birth Date</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user[0] }}</td>
+                    <td>{{ user[1] }}</td>
+                    <td>{{ user[2] }}</td>
+                    <td>{{ user[3] }}</td>
+                    <td>{{ user[4] }}</td>
+                    <td>{{ user[5] }}</td>
+                    <td>{{ user[6] }}</td>
+                    <td>{{ user[7] }}</td>
+                    <td>
+                        {% if user[7] != 'OPERATOR' %}
+                        <form method="POST" action="{{ url_for('upgrade_user', user_id=user[0]) }}" style="display:inline;">
+                            <button type="submit">Upgrade to Operator</button>
+                        </form>
+                        {% endif %}
+                        <form method="POST" action="{{ url_for('delete_user', user_id=user[0]) }}" style="display:inline;">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

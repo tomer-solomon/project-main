@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/index.css') }}">
+    <title>Document</title>
+    <h1>food orders</h1>
+
+ 
+        
+
+    
+
+</head>
+<body>
+    <div class="trc">
+    <button><a href="{{ url_for('login_page') }}">Log-in</a></button>
+    <button><a href="{{ url_for('signup_page') }}">Sign-up</a></button>
+    </div>
+    <!-- Build a Pen exploring the liquid state of matter-->
+    <div class="container">
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+        <div class="liquid"></div>
+      </div>
+      <svg>
+        <filter id="gooey">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+          <feColorMatrix values="
+              1 0 0 0 0
+              0 1 0 0 0
+              0 0 1 0 0
+              0 0 0 20 -10
+              " />
+        </filter>
+      </svg>
+    </div>
+    <span class="shape1"></span>
+
+</body>
+</html>

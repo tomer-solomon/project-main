@@ -1,0 +1,32 @@
+{% extends "harshama.html"%}
+
+{% block content %}
+<div class="container">
+    <div class="screen">
+        <div class="screen__content">
+            <form class="login" method="POST" action="{{ url_for('register') }}">
+                <div class="login_fields">
+                    <div class="login__field">
+                        <input type="text" name="email" class="login__input" placeholder="Email" required>
+                        <input type="password" name="password" class="login__input" placeholder="Password" required>
+                        <input type="text" name="name" class="login__input" placeholder="Name" required>
+                        <input type="text" name="surname" class="login__input" placeholder="Surname" required>
+                        <input type="text" name="city" class="login__input" placeholder="City" required>
+                        <input type="text" name="address" class="login__input" placeholder="Address" required>
+                        <input type="date" name="birth_date" class="login__input" placeholder="Birth Date" required>
+                    </div>
+                </div>              
+                <button class="button login__submit" type="submit">
+                    <span class="button__text">Sign Up Now</span>
+                </button>
+            </form>
+        </div>
+        <div class="screen__background">
+            <span class="screen__background__shape screen__background__shape4"></span>
+            <span class="screen__background__shape screen__background__shape3"></span>        
+            <span class="screen__background__shape screen__background__shape2"></span>
+            <span class="screen__background__shape screen__background__shape1"></span>
+        </div>      
+    </div>
+</div>
+{% endblock %}

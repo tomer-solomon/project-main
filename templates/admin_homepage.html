@@ -1,0 +1,15 @@
+{% extends "Homepage.html"%}
+
+
+{% block content%}
+
+<div class="button-container">
+    <button><a href="{{ url_for('restaurants') }}">Restaurants</a></button>
+    <button><a href="{{ url_for('orders') }}">Orders</button>
+    <button class="buttons"><a href="{{ url_for('users') }}">User Managment</a></button>
+</div>
+
+
+{% endblock %}
+
+

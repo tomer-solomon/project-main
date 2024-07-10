@@ -1,0 +1,35 @@
+{% extends "restaurant_base.html" %}
+
+{% block content %}
+<h1>{{ restaurant_name.replace("_", " ").title() }} Menu</h1>
+<div class="layout">
+    {% for dish in dishes %}
+    <div class="grow1">
+        <div class="content">
+            <h2 class="dish-name">{{ dish['name'] }}</h2>
+            <img src="{{ url_for('static', filename=dish['image_url']) }}" alt="{{ dish['name'] }}" class="dish-image">
+            <p class="dish-description">{{ dish['description'] }}</p>
+            <p class="dish-price">Price: ${{ dish['price'] }}</p>
+            <form method="POST" action="{{ url_for('add_to_cart') }}" class="action-form">
+                <input type="hidden" name="dish_name" value="{{ dish['name'] }}">
+                <input type="hidden" name="restaurant_name" value="{{ restaurant_name }}">
+                <input type="hidden" name="dish_price" value="{{ dish['price'] }}">
+                <button type="submit" class="add-to-cart-button">Add to Cart</button>
+            </form>
+            {% if session['role'] == 'ADMIN' %}
+            <div class="admin-buttons">
+                <a href="{{ url_for('edit_dish', dish_id=dish['id']) }}" class="edit-dish-button">Edit</a>
+                <form method="POST" action="{{ url_for('delete_dish', dish_id=dish['id']) }}" style="display:inline;">
+                    <button type="submit" class="delete-dish-button">Delete</button>
+                </form>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% if session['role'] == 'ADMIN' %}
+<a href="{{ url_for('add_dish', restaurant_name=restaurant_name) }}" class="add-dish-button">Add New Dish</a>
+{% endif %}
+<a href="{{ url_for('restaurants') }}" class="back-to-restaurants">Back to Restaurants</a>
+{% endblock %}

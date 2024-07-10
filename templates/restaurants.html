@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='restaurants.css') }}">
+    <title>Restaurants</title>
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <a href="{{ url_for('home') }}" class="home-page">Home</a>
+        </div>
+        <div class="right-header">
+            <a href="{{ url_for('cart') }}" class="view-cart">View Cart</a>
+        </div>
+    </div>
+    <h1 class="restaurants_title">Restaurants</h1>
+    <section class="layout">
+        <div class="grow1">
+            <div class="content">
+                <h2 class="restaurant-name">Chinese Food</h2>
+                <a href="{{ url_for('restaurant_menu', restaurant_name='chinese_food') }}">
+                    <img src="{{ url_for('static', filename='images/chinese_food.jpg') }}" alt="Chinese Food" class="restaurant-image">
+                </a>
+                <p class="restaurant-description">A great place for Chinese cuisine.</p>
+                <p class="restaurant-rating">Rating: 4.5</p>
+            </div>
+        </div>
+        <div class="grow1">
+            <div class="content">
+                <h2 class="restaurant-name">Italian Bistro</h2>
+                <a href="{{ url_for('restaurant_menu', restaurant_name='italian_bistro') }}">
+                    <img src="{{ url_for('static', filename='images/italian_bistro.jpg') }}" alt="Italian Bistro" class="restaurant-image">
+                </a>
+                <p class="restaurant-description">Authentic Italian dishes with a modern twist.</p>
+                <p class="restaurant-rating">Rating: 4.7</p>
+            </div>
+        </div>
+        <div class="grow1">
+            <div class="content">
+                <h2 class="restaurant-name">Mexican Fiesta</h2>
+                <a href="{{ url_for('restaurant_menu', restaurant_name='mexican_fiesta') }}">
+                    <img src="{{ url_for('static', filename='images/mexican_fiesta.jpg') }}" alt="Mexican Fiesta" class="restaurant-image">
+                </a>
+                <p class="restaurant-description">Enjoy a vibrant Mexican dining experience.</p>
+                <p class="restaurant-rating">Rating: 4.6</p>
+            </div>
+        </div>
+        <div class="grow1">
+            <div class="content">
+                <h2 class="restaurant-name">Sushi Heaven</h2>
+                <a href="{{ url_for('restaurant_menu', restaurant_name='sushi_heaven') }}">
+                    <img src="{{ url_for('static', filename='images/sushi_heaven.jpg') }}" alt="Sushi Heaven" class="restaurant-image">
+                </a>
+                <p class="restaurant-description">Fresh and delicious sushi made to order.</p>
+                <p class="restaurant-rating">Rating: 4.8</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

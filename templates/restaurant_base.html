@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='restaurants.css') }}">
+    <title>{{ restaurant_name }}</title>
+</head>
+<body>
+    <div class="header">
+        <div class="left-header">
+            <a href="{{ url_for('home') }}" class="home-page">Home</a>
+        </div>
+        <div class="right-header">
+            <a href="{{ url_for('cart') }}" class="view-cart">View Cart</a>
+            <a href="{{ url_for('restaurants') }}" class="back-to-restaurants">Back to Restaurants</a>
+            <a href="{{ url_for('orders') }}" class="view-orders">Orders</a>
+        </div>
+    </div>
+    <h1 class="restaurants_title">{{ restaurant_name.replace("_", " ").title() }}</h1>
+    <section class="layout">
+        {% block content %}
+        <!-- תוכן המסעדה יתווסף כאן -->
+        {% endblock %}
+    </section>
+</body>
+</html>

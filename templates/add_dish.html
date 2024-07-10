@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_edit.css') }}">
+    <title>Add Dish - {{ restaurant_name.replace("_", " ").title() }}</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Dish to {{ restaurant_name.replace("_", " ").title() }}</h1>
+        <form method="POST" action="{{ url_for('add_dish', restaurant_name=restaurant_name) }}">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+            <label for="image_url">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" required>
+            <button type="submit" class="add-dish-button">Add Dish</button>
+        </form>
+        
+    </div>
+</body>
+</html>

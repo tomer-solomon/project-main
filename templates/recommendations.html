@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_edit.css') }}">
+    <title>Recommendations</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="{{ url_for('home') }}" class="home-button">Home</a>
+        </div>
+        <h1>Restaurant Recommendations</h1>
+        
+        <form method="POST" action="{{ url_for('recommendations') }}">
+            <label for="restaurant_name">Restaurant Name:</label>
+            <select id="restaurant_name" name="restaurant_name" required>
+                <option value="Italian Bistro">Italian Bistro</option>
+                <option value="Sushi Heaven">Sushi Heaven</option>
+                <option value="Mexican Fiesta">Mexican Fiesta</option>
+                <option value="Chinese Delight">Chinese Delight</option>
+            </select>
+            
+            <input type="hidden" id="user_name" name="user_name" value="{{ session.get('user_name', 'Anonymous') }}">
+            
+            <label for="rating">Rating (1-5):</label>
+            <input type="number" id="rating" name="rating" min="1" max="5" required>
+            
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" required></textarea>
+            
+            <button type="submit">Submit Recommendation</button>
+        </form>
+        
+        <h2>All Recommendations</h2>
+        <ul>
+            {% for recommendation in recommendations %}
+            <li>
+                <strong>{{ recommendation['restaurant_name'] }}</strong> by {{ recommendation['user_name'] }}<br>
+                Rating: {{ recommendation['rating'] }}<br>
+                {{ recommendation['comment'] }}
+                {% if session.get('role') == 'OPERATOR' %}
+                <form method="POST" action="{{ url_for('delete_recommendation', id=recommendation['id']) }}" style="display:inline;">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

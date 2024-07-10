@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Homepage.css') }}">
+    <title>Homepage</title>
+</head>
+<body>
+    <h1 class="homepage_title">Homepage</h1>
+
+    {% if role =='ADMIN' %}
+    <p class="greeting_message">Hello, you are connected as {{ role }}</p>
+    {% elif  role =='OPERATOR' %}
+    <p class="greeting_message">Hello, you are connected as {{ role }}</p>
+    {% endif %}
+
+    <div>
+        {% block content %}
+        {% if role == 'ADMIN' %}
+            <p>Welcome, Admin!</p>
+            <a href="{{ url_for('users') }}">View Users</a>
+        {% elif role == 'OPERATOR' %}
+            
+            
+        {% elif role == 'USER' %}
+            
+            
+        {% endif %}
+        {% endblock %}
+    </div>
+</body>
+</html>

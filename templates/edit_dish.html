@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Dish</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='add_edit.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Dish</h1>
+        <form action="{{ url_for('edit_dish', dish_id=dish['id']) }}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" value="{{ dish['name'] }}" required>
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required>{{ dish['description'] }}</textarea>
+            <label for="price">Price:</label>
+            <input type="number" id="price" name="price" step="0.01" value="{{ dish['price'] }}" required>
+            <label for="image_url">Image URL:</label>
+            <input type="text" id="image_url" name="image_url" value="{{ dish['image_url'] }}" required>
+            <button type="submit">Update Dish</button>
+        </form>
+        <a href="{{ url_for('restaurant_menu', restaurant_name=dish['restaurant_name'].replace(" ", "_").lower()) }}" class="back-button">Back to Menu</a>
+    </div>
+</body>
+</html>

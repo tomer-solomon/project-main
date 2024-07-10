@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cart.css') }}">
+    <title>Cart</title>
+</head>
+<body>
+    <div class="header">
+        <a href="{{ url_for('restaurants') }}" class="back-to-restaurants">Back to Restaurants</a>
+    </div>
+    <div class="container">
+        <h1>Your Cart</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dish Name</th>
+                    <th>Restaurant Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in cart %}
+                <tr>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>${{ item[3] }}</td>
+                    <td>
+                        <form method="POST" action="{{ url_for('delete_from_cart', item_id=item[0]) }}">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div class="total">
+            <h2>Total: ${{ total }}</h2>
+        </div>
+        <form method="POST" action="{{ url_for('place_order') }}">
+            <textarea name="special_requests" placeholder="Enter special requests here..." rows="4"></textarea>
+            <button type="submit">Place Order</button>
+        </form>
+    </div>
+</body>
+</html>
